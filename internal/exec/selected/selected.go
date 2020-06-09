@@ -81,12 +81,10 @@ func applySelectionSet(r *Request, s *resolvable.Schema, e *resolvable.Object, s
 
 			switch field.Name.Name {
 			case "__typename":
-				if !r.DisableIntrospection {
-					flattenedSels = append(flattenedSels, &TypenameField{
-						Object: *e,
-						Alias:  field.Alias.Name,
-					})
-				}
+				flattenedSels = append(flattenedSels, &TypenameField{
+					Object: *e,
+					Alias:  field.Alias.Name,
+				})
 
 			case "__schema":
 				if !r.DisableIntrospection {
